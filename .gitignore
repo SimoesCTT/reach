@@ -1,0 +1,5 @@
+*.o
+*.a
+tests/probe_reach
+tests/probe_reach_warm
+tests/t_reach
