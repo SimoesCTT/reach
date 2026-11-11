@@ -18,7 +18,10 @@ static double now_ns(void)
 int main(void)
 {
     int fd = open("/dev/dri/renderD128", O_RDWR | O_CLOEXEC);
-    if (fd < 0) { perror("renderD128"); return 1; }
+    if (fd < 0) {
+        printf("SKIP: no /dev/dri/renderD128; the reach test requires a render node\n");
+        return 0;
+    }
     chipmem_set_fd(fd);
     chipmem_backend_t be;
     chipmem_buffer_t *buf = chipmem_alloc(4096, &be);

@@ -6,7 +6,7 @@ Summary:        Cached reachability query for DMA-BUF buffers on i915
 
 License:        MIT
 URL:            https://github.com/SimoesCTT/reach
-Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz
+Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:  gcc
 BuildRequires:  make
@@ -39,11 +39,7 @@ cost-class answer, because the ioctl cannot give one.
 
 
 %check
-if [ -e /dev/dri/renderD128 ]; then
-    make run-test
-else
-    echo "SKIP: no /dev/dri/renderD128 in buildroot; the reach test requires a render node"
-fi
+make run-test
 
 
 %install
@@ -59,5 +55,5 @@ install -m 0644 include/reach.h %{buildroot}%{_includedir}/reach/
 
 
 %changelog
-* Wed Nov 12 2026 Americo Simoes <amexsimoes@gmail.com> - 0.1.0-1
+* Thu Nov 12 2026 Americo Simoes <amexsimoes@gmail.com> - 0.1.0-1
 - Initial package.
